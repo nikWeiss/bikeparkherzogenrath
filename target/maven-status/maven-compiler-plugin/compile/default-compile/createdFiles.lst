@@ -1,0 +1,7 @@
+com\weiss\forum\controler\ForumController.class
+com\weiss\forum\controler\LoginController.class
+com\weiss\forum\controler\CrewController.class
+com\weiss\forum\controler\DatesController.class
+com\weiss\forum\controler\WelcomeController.class
+com\weiss\forum\security\SecurityConfig.class
+com\weiss\forum\ForumApplication.class
