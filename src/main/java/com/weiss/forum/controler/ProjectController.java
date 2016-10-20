@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Niklas
  */
 @Controller
-@RequestMapping("/project")
 public class ProjectController {
 
-    @RequestMapping("/")
+    @RequestMapping("/project")
     public String project(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "project");

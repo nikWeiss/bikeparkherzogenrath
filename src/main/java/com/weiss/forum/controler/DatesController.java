@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Niklas
  */
 @Controller
-@RequestMapping("/dates")
 public class DatesController {
 
-    @RequestMapping("/")
+    @RequestMapping("/dates")
     public String dates(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "dates");

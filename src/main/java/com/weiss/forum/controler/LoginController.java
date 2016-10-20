@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Niklas
  */
 @Controller
-@RequestMapping("/login")
 public class LoginController {
 
-    @RequestMapping("/")
+    @RequestMapping("/login")
     public String login(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "login");
