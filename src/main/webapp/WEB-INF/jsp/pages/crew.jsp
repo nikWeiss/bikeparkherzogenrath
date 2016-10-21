@@ -5,7 +5,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <c:forEach items="${content}" var="test">
-    <div class="col-sm-4">
+    <div class="col-xs-12 col-sm-6 col-lg-4">
 	<div class="text-center">
 	    <h1>
 		${test.getHeader()}
