@@ -9,13 +9,11 @@
 <f:view>
     <html>
 	<%@ include file="headerfooter/header.jsp" %>
-        
+
         <body>
 	    <div class="container container-fluid">
 		<jsp:include page="headerfooter/navbar.jsp" flush="true" />
-		<%--<%@ include file="./headerfooter/navbar.jsp" %>--%>
 		<jsp:include page ="pages/${site}.jsp" flush="true" />
-		<%--<%@ include file="pages/" ${site} ".jsp" %>--%>
 	    </div>
 	</body>
     </html>

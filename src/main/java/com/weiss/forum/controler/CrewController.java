@@ -1,5 +1,7 @@
 package com.weiss.forum.controler;
 
+import com.weiss.forum.logic.ContentController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class CrewController {
+    
+    @Autowired
+    private ContentController contentController;
 
     @RequestMapping("/crew")
     public String crew(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "crew");
+	model.addAttribute("content", this.contentController.getContents("crew"));
 	return "index";
     }
 }

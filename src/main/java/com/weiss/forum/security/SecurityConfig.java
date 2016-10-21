@@ -15,18 +15,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
     private static Logger LOGGER = Logger.getLogger(SecurityConfig.class.getName());
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//	http
-//	    .authorizeRequests()
-//	    .antMatchers("/css/**", "/index").permitAll()
-//	    .antMatchers("/user/**").hasRole("USER")
-//	    .and()
-//	    .formLogin()
-//	    .loginPage("/login").failureUrl("/login-error");
-//    }
-//
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+	http
+	    .authorizeRequests()
+	    .antMatchers("/css/**", "/index").permitAll()
+	    .antMatchers("/user/**").hasRole("USER")
+	    .and()
+	    .formLogin()
+	    .loginPage("/login").failureUrl("/login-error");
+    }
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 	auth
