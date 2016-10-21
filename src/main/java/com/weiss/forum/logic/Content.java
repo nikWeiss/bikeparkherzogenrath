@@ -4,13 +4,13 @@ package com.weiss.forum.logic;
  *
  * @author Niklas
  */
-public interface Content {
+public abstract class Content {
 
-    public String getHeader();
+    public abstract String getHeader();
 
-    public String getBody();
+    public abstract String getBody();
 
-    public String getFooter();
+    public abstract String getFooter();
     
-    public String getImage();
+    public abstract String getImage();
 }
