@@ -40,6 +40,13 @@
 	    <version>3.0.0.RELEASE</version>
 	</dependency>
 	
+	<!--mongodb-->
+<!--	<dependency>
+	    <groupId>org.springframework.data</groupId>
+	    <artifactId>spring-data-mongodb</artifactId>
+	    <version>1.9.4.RELEASE</version>
+	</dependency>-->
+	
 	<!--jsp-->
 	<dependency>
 	    <groupId>org.apache.tomcat.embed</groupId>

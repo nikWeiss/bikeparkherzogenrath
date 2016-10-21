@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.weiss.forum.controler.WelcomeControllerTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.042 sec - in com.weiss.forum.controler.WelcomeControllerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.58 sec - in com.weiss.forum.controler.WelcomeControllerTest

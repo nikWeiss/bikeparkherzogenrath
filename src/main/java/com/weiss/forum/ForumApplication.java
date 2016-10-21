@@ -5,9 +5,8 @@
  */
 package com.weiss.forum;
 
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
