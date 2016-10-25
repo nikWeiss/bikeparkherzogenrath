@@ -19,7 +19,7 @@ public class CrewContent extends Content {
     }
 
     public String getImage() {
-	return "c://test.jpg";
+	return "C:/test.jpeg";
     }
 
 }

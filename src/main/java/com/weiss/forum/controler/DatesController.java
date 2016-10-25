@@ -1,5 +1,7 @@
 package com.weiss.forum.controler;
 
+import com.weiss.forum.logic.ContentController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class DatesController {
 
+    @Autowired
+    private ContentController contentController;
+
     @RequestMapping("/dates")
     public String dates(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "dates");
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
 	return "index";
     }
 }

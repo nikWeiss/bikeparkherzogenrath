@@ -12,7 +12,7 @@
 		${test.getHeader()}
 	    </h1>
 	</div>
-	<img src="${test.getImage()}" />
+	<img src="/photo?image=${test.getImage()}" class="img-responsive img-rounded" /> 
 	<br />
 	${test.getBody()} 
 	<div class="text-right">

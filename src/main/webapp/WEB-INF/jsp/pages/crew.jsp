@@ -12,7 +12,7 @@
 	    </h1>
 	</div>
 	<div class="col-sm-4">
-	     <img src="${test.getImage()}" /> 
+	    <img src="/photo?image=${test.getImage()}" class="img-responsive img-rounded" /> 
 	</div>
 	<div class="col-sm-8">
 	    ${test.getBody()} 

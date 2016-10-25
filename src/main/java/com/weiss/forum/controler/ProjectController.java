@@ -22,6 +22,8 @@ public class ProjectController {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "project");
 	model.addAttribute("content", this.contentController.getContents("project"));
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
 	return "index";
     }
 }
