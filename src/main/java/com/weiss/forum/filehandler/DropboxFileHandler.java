@@ -31,25 +31,6 @@ public class DropboxFileHandler implements FileHandler {
 	this.client = new DbxClientV2(config, ACCESS_TOKEN);
     }
 
-    public static void main(String args[]) throws DbxException {
-	DbxRequestConfig config = new DbxRequestConfig("", "de_DE");
-	DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
-	ListFolderResult result = client.files().listFolder("");
-
-	while (true) {
-	    for (Metadata metadata : result.getEntries()) {
-		System.out.println(metadata.getClass());
-		System.out.println(metadata.getPathLower());
-	    }
-
-	    if (!result.getHasMore()) {
-		break;
-	    }
-
-	    result = client.files().listFolderContinue(result.getCursor());
-	}
-    }
-
     @Override
     public List<String> listFolders() {
 	List<String> folders = new ArrayList<>();
