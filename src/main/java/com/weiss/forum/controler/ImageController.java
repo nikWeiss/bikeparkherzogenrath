@@ -25,9 +25,8 @@ public class ImageController {
     @ResponseBody
     @RequestMapping(value = "/photo", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] testphoto(@RequestParam String image) throws IOException {
-//	InputStream in = new BufferedInputStream(new FileInputStream(new File(image)));
 	DropboxFileHandler dropboxFileHandler = new DropboxFileHandler();
-	InputStream in = dropboxFileHandler.getImage("/test.jpeg");
+	InputStream in = dropboxFileHandler.getImage("/" + image);
 	return IOUtils.toByteArray(in);
     }
 }

@@ -24,7 +24,7 @@ public class ProjectContent extends Content {
 
     @Override
     public String getImage() {
-	return "C:/test.jpeg";
+	return "test.jpeg";
     }
 
 }
