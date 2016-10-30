@@ -11,10 +11,10 @@
 		${test.getHeader()}
 	    </h1>
 	</div>
-	<div class="col-sm-4">
+	<div class="col-sm-4 col-xs-4">
 	    <img src="/photo?image=${test.getImage()}" class="img-responsive img-rounded" /> 
 	</div>
-	<div class="col-sm-8">
+	<div class="col-sm-8 col-xs-8">
 	    ${test.getBody()} 
 	</div>
 	<div class="text-right">

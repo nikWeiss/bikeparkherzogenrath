@@ -1,5 +1,6 @@
 package com.weiss.forum.controler;
 
+import com.weiss.forum.filehandler.DropboxFileHandler;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,7 +25,9 @@ public class ImageController {
     @ResponseBody
     @RequestMapping(value = "/photo", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] testphoto(@RequestParam String image) throws IOException {
-	InputStream in = new BufferedInputStream(new FileInputStream(new File(image)));
+//	InputStream in = new BufferedInputStream(new FileInputStream(new File(image)));
+	DropboxFileHandler dropboxFileHandler = new DropboxFileHandler();
+	InputStream in = dropboxFileHandler.getImage("/test.jpeg");
 	return IOUtils.toByteArray(in);
     }
 }
