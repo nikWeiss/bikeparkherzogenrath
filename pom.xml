@@ -41,11 +41,11 @@
 	</dependency>
 	
 	<!--mongodb-->
-	<!--	<dependency>
+	<dependency>
 	    <groupId>org.springframework.data</groupId>
 	    <artifactId>spring-data-mongodb</artifactId>
 	    <version>1.9.4.RELEASE</version>
-	</dependency>-->
+	</dependency>
 	
 	<!--jsp-->
 	<dependency>

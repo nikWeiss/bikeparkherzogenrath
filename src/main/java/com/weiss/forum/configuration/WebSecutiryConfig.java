@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 //@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecutiryConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -25,19 +25,4 @@ public class WebSecutiryConfig extends WebSecurityConfigurerAdapter {
 		.withUser("user")
 		.password("password").roles("USER");
     }
-
-//    @Override
-//    public void configure(HttpSecurity http) throws Exception {
-//	http
-//		.antMatcher("/**")
-//		.anonymous();
-//    }
-//
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//	web
-//		.ignoring()
-//		.antMatchers("/**");
-//		
-//    }
 }

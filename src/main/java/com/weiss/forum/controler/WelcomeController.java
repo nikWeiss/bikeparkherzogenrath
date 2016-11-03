@@ -1,6 +1,8 @@
 package com.weiss.forum.controler;
 
+import com.weiss.forum.db.repository.ProjectRepository;
 import com.weiss.forum.logic.ContentController;
+import com.weiss.forum.logic.ProjectContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class WelcomeController {
+    
+    @Autowired 
+    private ProjectRepository projectRepo;
 
     @Autowired
     private ContentController contentController;
@@ -40,6 +45,23 @@ public class WelcomeController {
 
     @RequestMapping("/test")
     public String jspTest(Model model) {
+	this.projectRepo.deleteAll();
+	
+	ProjectContent content = new ProjectContent();
+	content.setBody("Test Body");
+	content.setFooter("Test Footer");
+	content.setImage("Test Image");
+	this.projectRepo.save(content);
+	ProjectContent content2 = new ProjectContent();
+	content2.setBody("Test Body");
+	content2.setFooter("Test Footer");
+	content2.setImage("Test Image");
+	this.projectRepo.save(content2);
+	
+	for(ProjectContent single: this.projectRepo.findAll()){
+	    System.out.println(single);
+	}
+	
 	return "test/jsp-spring-boot";
     }
 }

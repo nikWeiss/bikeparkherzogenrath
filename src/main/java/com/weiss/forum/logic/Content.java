@@ -1,16 +1,59 @@
 package com.weiss.forum.logic;
 
+import java.math.BigInteger;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  *
  * @author Niklas
  */
 public abstract class Content {
 
-    public abstract String getHeader();
+    @Id
+    protected BigInteger id;
+    protected String header;
+    protected String body;
+    protected String footer;
+    protected String image;
 
-    public abstract String getBody();
+    public BigInteger getId() {
+	return id;
+    }
 
-    public abstract String getFooter();
-    
-    public abstract String getImage();
+    public void setId(BigInteger id) {
+	this.id = id;
+    }
+
+    public String getHeader() {
+	return header;
+    }
+
+    public void setHeader(String header) {
+	this.header = header;
+    }
+
+    public String getBody() {
+	return body;
+    }
+
+    public void setBody(String body) {
+	this.body = body;
+    }
+
+    public String getFooter() {
+	return footer;
+    }
+
+    public void setFooter(String footer) {
+	this.footer = footer;
+    }
+
+    public String getImage() {
+	return image;
+    }
+
+    public void setImage(String image) {
+	this.image = image;
+    }
 }
