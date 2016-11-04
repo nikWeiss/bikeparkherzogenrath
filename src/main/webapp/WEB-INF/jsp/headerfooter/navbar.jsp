@@ -11,17 +11,30 @@
 	<div id="navbar" class="navbar">
 	    <ul class="nav navbar-nav">
 		<c:forEach items="${leftNavigation}" var="nav">
-		    <li><a href="${nav.getLink()}">${nav.getName()}</a></li>
-		    </c:forEach>
+		    <sec:authorize access="${nav.getAuthorization()}">
+			<li>
+			    <a href="${nav.getLink()}">${nav.getName()}</a>
+			</li>
+		    </sec:authorize>
+		</c:forEach>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
 
-		<sec:authorize access="isAuthenticated()">
-		    <li><a><sec:authentication property="principal.username" /></a></li>
-		</sec:authorize>
 		<sec:authorize access="!isAuthenticated()">
-		    <li><a href="login">Login</a></li>
-		    <li><a href="register">Register</a></li>
+		    <li>
+			<a href="login">Login</a>
+		    </li>
+		    <li>
+			<a href="register">Register</a>
+		    </li>
+		</sec:authorize>
+		<sec:authorize access="isAuthenticated()">
+		    <li>
+			<a><sec:authentication property="principal.username" /></a>
+		    </li>
+		    <li>
+			<a href="logout">Logout</a>
+		    </li>
 		</sec:authorize>
 	    </ul>
 	</div>

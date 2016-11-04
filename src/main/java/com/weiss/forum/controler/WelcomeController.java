@@ -37,8 +37,8 @@ public class WelcomeController {
     public String admin(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath Admin");
 	model.addAttribute("site", "index");
-	model.addAttribute("leftNavigation", this.contentController.getAdminLeftNavigation("ger"));
-	model.addAttribute("rightNavigation", this.contentController.getAdminRightNaviation("ger"));
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
 	return "index";
     }
 

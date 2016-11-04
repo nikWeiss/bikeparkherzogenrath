@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  *
@@ -42,10 +43,9 @@ public class WebSecutiryConfig extends WebSecurityConfigurerAdapter {
 		.formLogin()
 		.loginPage("/login")
 		.failureUrl("/login?login_error=1")
-		.defaultSuccessUrl("/")
 		.and()
 		.logout()
 		.logoutUrl("/logout")
-		.logoutSuccessUrl("/index");
+		.logoutSuccessUrl("/");
     }
 }

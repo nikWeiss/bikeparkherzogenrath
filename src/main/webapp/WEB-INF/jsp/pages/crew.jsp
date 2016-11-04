@@ -3,7 +3,8 @@
     Created on : 16.10.2016, 00:38:45
     Author     : Niklas
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:forEach items="${content}" var="test">
     <div class="col-xs-12 col-sm-6 col-lg-4">
 	<div class="text-center">
@@ -22,5 +23,22 @@
 		${test.getFooter()}
 	    </h4>
 	</div>
+	<sec:authorize access="hasRole('ADMIN')">
+	    <form action="/crew/edit/${test.getId()}" method="POST">
+		<button type="button" class="btn btn-default btn-lg">
+		    <span class="glyphicon glyphicon-pencil" aria-hidden="true" />
+		    Bearbeiten
+		</button>
+	    </form>
+	</sec:authorize>
     </div>
 </c:forEach>
+
+<sec:authorize access="hasRole('ADMIN')">
+    <div class="col-xs-12 col-sm-6 col-lg-4">
+	<form action="/crew/add" method="POST">
+	    <button class="btn btn-default btn-lg glyphicon glyphicon-plus" type="submit" >
+	    </button>
+	</form>
+    </div>
+</sec:authorize>
