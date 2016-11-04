@@ -24,7 +24,6 @@ public class WelcomeController {
     private ContentController contentController;
 
     @RequestMapping("/")
-    @PreAuthorize("permitAll()")
     public String index(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "index");
@@ -34,7 +33,7 @@ public class WelcomeController {
     }
 
     @RequestMapping("/admin")
-    @PreAuthorize("hasRole('USER_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public String admin(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath Admin");
 	model.addAttribute("site", "index");
