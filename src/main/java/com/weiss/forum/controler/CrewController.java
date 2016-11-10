@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -29,7 +30,7 @@ public class CrewController {
 	return "index";
     }
 
-    @RequestMapping("/crew/edit/{id}")
+    @RequestMapping(value = "/crew/edit/{id}", method = RequestMethod.GET)
     @PreAuthorize("hasRole('ADMIN')")
     public String edit(ModelMap model, @PathVariable BigInteger id) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
@@ -40,7 +41,7 @@ public class CrewController {
 	return "index";
     }
 
-    @RequestMapping("/crew/add")
+    @RequestMapping(value = "/crew/add", method = RequestMethod.GET)
     @PreAuthorize("hasRole('ADMIN')")
     public String edit(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath");

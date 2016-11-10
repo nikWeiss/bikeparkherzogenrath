@@ -25,17 +25,17 @@ public class ContentController {
     public List<NavContent> getLeftNavigation(String language) {
 	List<NavContent> ret = new ArrayList<>();
 	ret.add(new NavContent("/", "Bikepark Herzogenrath", "permitAll()"));
-	ret.add(new NavContent("project", "Projekt", "permitAll()"));
-	ret.add(new NavContent("dates", "Termine", "permitAll()"));
-	ret.add(new NavContent("crew", "Team", "permitAll()"));
-	ret.add(new NavContent("forum", "Forum", "isAuthenticated()"));
+	ret.add(new NavContent("/project", "Projekt", "permitAll()"));
+	ret.add(new NavContent("/dates", "Termine", "permitAll()"));
+	ret.add(new NavContent("/crew", "Team", "permitAll()"));
+	ret.add(new NavContent("/forum", "Forum", "isAuthenticated()"));
 	return ret;
     }
 
     public List<NavContent> getRightNaviation(String language) {
 	List<NavContent> ret = new ArrayList<>();
-	ret.add(new NavContent("login", "Anmelden", "!isAuthenticated()"));
-	ret.add(new NavContent("register", "Registrierung", "!isAuthenticated()"));
+	ret.add(new NavContent("/login", "Anmelden", "!isAuthenticated()"));
+	ret.add(new NavContent("/register", "Registrierung", "!isAuthenticated()"));
 	return ret;
     }
 
@@ -44,16 +44,8 @@ public class ContentController {
 	List<Content> ret = new ArrayList<>();
 	if (module.equals("crew")) {
 	    ret.addAll(this.crewRepository.findAll());
-	    for (int i = 0; i < 10; i++) {
-//		Content crewContent = new CrewContent();
-//		ret.add(crewContent);
-	    }
 	} else if (module.equals("project")) {
 	    ret.addAll(this.projectRepository.findAll());
-	    for (int i = 0; i < 10; i++) {
-//		Content crewContent = new ProjectContent();
-//		ret.add(crewContent);
-	    }
 	}
 	return ret;
     }

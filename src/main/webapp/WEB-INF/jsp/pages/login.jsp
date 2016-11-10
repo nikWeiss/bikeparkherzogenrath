@@ -7,6 +7,7 @@
 <h1>Login</h1>
 <form name='f' action="login" method='POST'>
     <table>
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<tr>
             <td>User:</td>
             <td><input type='text' name='username' value=''></td>
@@ -15,7 +16,6 @@
             <td>Password:</td>
             <td><input type='password' name='password' /></td>
 	</tr>
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<tr>
             <td><input name="submit" type="submit" value="submit" /></td>
 	</tr>
