@@ -43,7 +43,18 @@ public class CrewController {
 
     @RequestMapping(value = "/crew/add", method = RequestMethod.GET)
     @PreAuthorize("hasRole('ADMIN')")
-    public String edit(ModelMap model) {
+    public String addGet(ModelMap model) {
+	model.addAttribute("title", "Bikepark Herzogenrath");
+	model.addAttribute("site", "crewAdd");
+	model.addAttribute("content", this.contentController.getContents("crew"));
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+	return "index";
+    }
+
+    @RequestMapping(value = "/crew/add", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('ADMIN')")
+    public String addPost(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "crewAdd");
 	model.addAttribute("content", this.contentController.getContents("crew"));

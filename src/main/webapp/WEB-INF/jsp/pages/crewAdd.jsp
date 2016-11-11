@@ -29,7 +29,7 @@
 
 	    <button type="button submit" class="btn btn-default btn-lg">
 		<span class="glyphicon glyphicon-pencil" aria-hidden="true" />
-		Bearbeiten
+		Hinzufügen
 	    </button>
 	</form>
     </sec:authorize>

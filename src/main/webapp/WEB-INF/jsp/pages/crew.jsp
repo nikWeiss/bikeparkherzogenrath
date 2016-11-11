@@ -36,8 +36,8 @@
 
 <sec:authorize access="hasRole('ADMIN')">
     <div class="col-xs-12 col-sm-6 col-lg-4">
-	<form action="/crew/add" method="POST">
-	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	<form action="/crew/add" method="GET">
+	    <!--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
 	    <button class="btn btn-default btn-lg glyphicon glyphicon-plus" type="submit" >
 	    </button>
 	</form>
