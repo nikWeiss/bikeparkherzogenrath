@@ -44,11 +44,19 @@ public class CrewController {
     @PreAuthorize("hasRole('ADMIN')")
     public String edit(ModelMap model, @PathVariable BigInteger id) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "crewEdit");
+	model.addAttribute("site", "crewAdd");
 	model.addAttribute("content", this.contentController.getContents("crew"));
 	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
 	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+	model.addAttribute("crew", this.crewRepository.findOne(id));
 	return "index";
+    }
+
+    @RequestMapping(value = "/crew/delete/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ADMIN')")
+    public String delete(ModelMap model, @PathVariable BigInteger id) {
+	this.crewRepository.delete(id);
+	return "redirect:/crew";
     }
 
     @RequestMapping(value = "/crew/add", method = RequestMethod.GET)
@@ -66,13 +74,7 @@ public class CrewController {
     @RequestMapping(value = "/crew/add", method = RequestMethod.POST)
     @PreAuthorize("hasRole('ADMIN')")
     public String addPost(ModelMap model, @ModelAttribute("crew") CrewContent crew) {
-	LOGGER.info(crew.getHeader());
-	LOGGER.info(crew.getBody());
-	LOGGER.info(crew.getFooter());
-	LOGGER.info(crew.getImage());
-	
 	crewRepository.save(crew);
-
 	return "redirect:/crew";
     }
 }

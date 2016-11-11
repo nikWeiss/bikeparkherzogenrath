@@ -24,10 +24,14 @@
 	    </h4>
 	</div>
 	<sec:authorize access="hasRole('ADMIN')">
-	    <form action="/crew/edit/${test.getId()}" method="POST">
-		<button type="button" class="btn btn-default btn-lg">
-		    <span class="glyphicon glyphicon-pencil" aria-hidden="true" />
-		    Bearbeiten
+	    <form action="/crew/edit/${test.getId()}" method="GET">
+		<button type="submit" class="btn btn-default btn-lg">
+		    <span class="glyphicon glyphicon-ok" aria-hidden="true" />
+		</button>
+	    </form>
+	    <form action="/crew/delete/${test.getId()}" method="GET">
+		<button type="submit" class="btn btn-default btn-lg">
+		    <span class="glyphicon glyphicon-remove" aria-hidden="true" />
 		</button>
 	    </form>
 	</sec:authorize>
@@ -37,7 +41,6 @@
 <sec:authorize access="hasRole('ADMIN')">
     <div class="col-xs-12 col-sm-6 col-lg-4">
 	<form action="/crew/add" method="GET">
-	    <!--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
 	    <button class="btn btn-default btn-lg glyphicon glyphicon-plus" type="submit" >
 	    </button>
 	</form>
