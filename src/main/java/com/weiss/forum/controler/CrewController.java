@@ -4,8 +4,6 @@ import com.weiss.forum.db.repository.CrewRepository;
 import com.weiss.forum.logic.ContentController;
 import com.weiss.forum.logic.CrewContent;
 import java.math.BigInteger;
-import java.util.logging.LogManager;
-import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -85,7 +83,7 @@ public class CrewController {
     public String addPost(ModelMap model, @ModelAttribute("crew") CrewContent crew) {
 	LOGGER.info("/crew/add/ is called POST");
 
-	crewRepository.save(crew);
+	this.crewRepository.save(crew);
 	return "redirect:/crew";
     }
 }

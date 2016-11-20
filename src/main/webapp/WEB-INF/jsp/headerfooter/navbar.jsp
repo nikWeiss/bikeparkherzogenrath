@@ -22,10 +22,10 @@
 
 		<sec:authorize access="!isAuthenticated()">
 		    <li>
-			<a href="login">Login</a>
+			<a href="/login">Login</a>
 		    </li>
 		    <li>
-			<a href="register">Register</a>
+			<a href="/register">Register</a>
 		    </li>
 		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
@@ -33,7 +33,7 @@
 			<a><sec:authentication property="principal.username" /></a>
 		    </li>
 		    <li>
-			<a href="logout">Logout</a>
+			<a href="/logout">Logout</a>
 		    </li>
 		</sec:authorize>
 	    </ul>

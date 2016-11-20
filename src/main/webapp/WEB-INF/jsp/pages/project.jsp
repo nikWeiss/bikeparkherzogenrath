@@ -7,13 +7,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>	
 <c:forEach items="${content}" var="test">
-    <div class="col-xs-12 col-sm-6 col-lg-4">
+    <div class="col-xs-12 col-sm-6 col-lg-6">
 	<div class="text-center">
 	    <h1>
 		${test.getHeader()}
 	    </h1>
 	</div>
-	<img src="/photo?image=${test.getImage()}" class="img-responsive img-rounded" /> 
+	<c:if test="${test.isImageSet()}">
+	    <img src="/photo?image=${test.getImage()}" class="img-responsive img-rounded" /> 
+	</c:if>
 	<br />
 	${test.getBody()} 
 	<div class="text-right">

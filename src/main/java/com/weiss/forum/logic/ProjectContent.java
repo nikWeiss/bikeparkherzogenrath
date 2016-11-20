@@ -6,4 +6,7 @@ package com.weiss.forum.logic;
  */
 public class ProjectContent extends Content {
 
+    public boolean isImageSet() {
+	return !"".equals(this.getImage());
+    }
 }

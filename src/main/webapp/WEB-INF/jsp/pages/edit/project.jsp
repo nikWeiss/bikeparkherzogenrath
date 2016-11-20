@@ -8,7 +8,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <div class="col-xs-12 col-sm-6 col-lg-4">
     <sec:authorize access="hasRole('ADMIN')">
-	<form:form action="/crew/add/" method="POST" modelAttribute="crew">
+	<form:form action="/project/add/" method="POST" modelAttribute="project">
 	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	    <form:input type="hidden" value="${test.getId()}" path="id" />
 	    <div class="form-group">

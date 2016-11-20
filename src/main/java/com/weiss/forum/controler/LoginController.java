@@ -1,7 +1,10 @@
 package com.weiss.forum.controler;
 
 import com.weiss.forum.logic.ContentController;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,20 @@ public class LoginController {
 	model.addAttribute("site", "login");
 	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
 	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+	
+	return "index";
+    }
+
+    @RequestMapping("/logout")
+    @PreAuthorize("isAuthenticated()")
+    public String logout(ModelMap model, HttpServletRequest request) throws ServletException {
+	request.logout();
+
+	model.addAttribute("title", "Bikepark Herzogenrath");
+	model.addAttribute("site", "index");
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+
 	return "index";
     }
 }
