@@ -28,7 +28,7 @@ public class ContentController {
 	ret.add(new NavContent("/project", "Projekt", "permitAll()"));
 	ret.add(new NavContent("/dates", "Termine", "permitAll()"));
 	ret.add(new NavContent("/crew", "Team", "permitAll()"));
-	ret.add(new NavContent("/forum", "Forum", "isAuthenticated()"));
+//	ret.add(new NavContent("/forum", "Forum", "isAuthenticated()"));
 	return ret;
     }
 

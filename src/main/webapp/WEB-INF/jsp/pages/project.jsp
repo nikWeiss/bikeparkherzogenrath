@@ -16,6 +16,11 @@
 	<c:if test="${test.isImageSet()}">
 	    <img src="/photo?image=${test.getImage()}" class="img-responsive img-rounded" /> 
 	</c:if>
+	<c:if test="${test.isImageListSet()}">
+	    <c:forEach items="${test.getImageListArray()}" var="image">
+		<img src="/photo?image=${image}" class="img-responsive img-rounded" /> 
+	    </c:forEach>
+	</c:if>
 	<br />
 	${test.getBody()} 
 	<div class="text-right">

@@ -10,22 +10,26 @@
     <sec:authorize access="hasRole('ADMIN')">
 	<form:form action="/project/add/" method="POST" modelAttribute="project">
 	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	    <form:input type="hidden" value="${test.getId()}" path="id" />
+	    <form:input type="hidden" value="${project.getId()}" path="id" />
 	    <div class="form-group">
 		<form:label path="header">Header</form:label>
-		<form:input path="header" value="${crew.getHeader()}" />
+		<form:input path="header" value="${project.getHeader()}" />
 	    </div>
 	    <div class="form-group">
 		<form:label path="body">Body</form:label>
-		<form:input path="body" value="${crew.getBody()}" />
+		<form:input path="body" value="${project.getBody()}" />
 	    </div>
 	    <div class="form-group">
 		<form:label path="footer">Footer</form:label>
-		<form:input path="footer" value="${crew.getFooter()}"/>
+		<form:input path="footer" value="${project.getFooter()}"/>
 	    </div>
 	    <div class="form-group">
 		<label path="image">Bild</label>
-		<form:input path="image" value="${crew.getImage()}"/>
+		<form:input path="image" value="${project.getImage()}"/>
+	    </div>
+	    <div class="form-group">
+		<label path="image">Bilder</label>
+		<form:input path="imageList" value="${project.getImageList()}"/>
 	    </div>
 
 	    <button type="button submit" class="btn btn-default btn-lg">
