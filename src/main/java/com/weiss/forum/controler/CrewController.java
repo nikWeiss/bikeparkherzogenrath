@@ -44,7 +44,7 @@ public class CrewController {
     @PreAuthorize("hasRole('ADMIN')")
     public String edit(ModelMap model, @PathVariable BigInteger id) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "crewAdd");
+	model.addAttribute("site", "edit/crew");
 	model.addAttribute("content", this.contentController.getContents("crew"));
 	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
 	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
@@ -63,7 +63,7 @@ public class CrewController {
     @PreAuthorize("hasRole('ADMIN')")
     public String addGet(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "crewAdd");
+	model.addAttribute("site", "edit/crew");
 	model.addAttribute("content", this.contentController.getContents("crew"));
 	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
 	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
