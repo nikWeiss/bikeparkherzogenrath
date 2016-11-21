@@ -24,12 +24,8 @@
 		<form:input path="footer" value="${project.getFooter()}"/>
 	    </div>
 	    <div class="form-group">
-		<label path="image">Bild</label>
+		<label path="image">Bild/er</label>
 		<form:input path="image" value="${project.getImage()}"/>
-	    </div>
-	    <div class="form-group">
-		<label path="image">Bilder</label>
-		<form:input path="imageList" value="${project.getImageList()}"/>
 	    </div>
 
 	    <button type="button submit" class="btn btn-default btn-lg">

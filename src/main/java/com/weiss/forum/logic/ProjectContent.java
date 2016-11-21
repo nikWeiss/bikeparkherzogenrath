@@ -9,28 +9,15 @@ import org.apache.log4j.Logger;
  */
 public class ProjectContent extends Content {
 
-    Logger LOGGER = Logger.getLogger(ProjectContent.class);
-
-    protected String imageList;
-
     public boolean isImageSet() {
-	return !"".equals(this.getImage());
+	return (!"".equals(this.getImage())) && null != this.getImage() && !this.getImage().contains(";");
     }
 
     public boolean isImageListSet() {
-	return (!"".equals(this.getImageList())) && null != this.getImageList();
-    }
-
-    public void setImageList(String imageList) {
-	this.imageList = this.imageList;
-    }
-
-    public String getImageList() {
-	return this.imageList;
+	return (!"".equals(this.getImage())) && null != this.getImage() && this.getImage().contains(";");
     }
 
     public String[] getImageListArray() {
-	LOGGER.info(Arrays.toString(this.imageList.split(";")));
-	return this.imageList.split(";");
+	return this.getImage().split(";");
     }
 }
