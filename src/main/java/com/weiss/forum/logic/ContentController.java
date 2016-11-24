@@ -45,7 +45,7 @@ public class ContentController {
 	if (module.equals("crew")) {
 	    ret.addAll(this.crewRepository.findAll());
 	} else if (module.equals("project")) {
-	    ret.addAll(this.projectRepository.findAll());
+	    ret.addAll(this.projectRepository.findAllByOrderByIdDesc());
 	}
 	return ret;
     }

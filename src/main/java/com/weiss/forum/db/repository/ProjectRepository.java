@@ -2,6 +2,7 @@ package com.weiss.forum.db.repository;
 
 import com.weiss.forum.logic.ProjectContent;
 import java.math.BigInteger;
+import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
@@ -10,4 +11,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface ProjectRepository extends MongoRepository<ProjectContent, BigInteger> {
 
+    public List<ProjectContent> findAllByOrderByIdDesc();
+
+    public List<ProjectContent> findAllByOrderByIdAsc();
 }
