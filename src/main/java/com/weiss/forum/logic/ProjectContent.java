@@ -9,6 +9,16 @@ import org.apache.log4j.Logger;
  */
 public class ProjectContent extends Content {
 
+    private Integer position;
+
+    public Integer getPosition() {
+	return position;
+    }
+
+    public void setPosition(Integer position) {
+	this.position = position;
+    }
+
     public boolean isImageSet() {
 	return (!"".equals(this.getImage())) && null != this.getImage() && !this.getImage().contains(";");
     }

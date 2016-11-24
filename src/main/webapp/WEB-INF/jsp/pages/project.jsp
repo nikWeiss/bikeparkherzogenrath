@@ -6,8 +6,17 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>	
+
+<c:set var="count" value="0" />
+
 <c:forEach items="${content}" var="test">
-    <div class="col-xs-12 col-sm-6 col-lg-6">
+    <c:if test="${(count mod 2) == 0}">
+	<%--<c:out value="${count}" />--%>
+	<div class="clearfix visible-xx"></div>
+<!--	<div class="clearfix visible-md-block" />
+	<div class="clearfix visible-lg-block" />-->
+    </c:if>
+    <div class="col-xs-12 col-sm-6 col-lg-6 row">
 	<div class="text-center">
 	    <h1>
 		${test.getHeader()}
@@ -45,6 +54,7 @@
 	    </table>
 	</sec:authorize>
     </div>
+    <c:set var="count" value="${count+1}" />
 </c:forEach>
 
 <sec:authorize access="hasRole('ADMIN')">

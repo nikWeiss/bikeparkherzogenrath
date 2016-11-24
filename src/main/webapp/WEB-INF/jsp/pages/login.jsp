@@ -4,20 +4,18 @@
     Author     : Niklas
 --%>
 
-<h1>Login</h1>
 <form name='f' action="login" method='POST'>
-    <table>
+    <h1>Login</h1>
+    <div class="container card card-container">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	<tr>
-            <td>User:</td>
-            <td><input type='text' name='username' value=''></td>
-	</tr>
-	<tr>
-            <td>Password:</td>
-            <td><input type='password' name='password' /></td>
-	</tr>
-	<tr>
-            <td><input name="submit" type="submit" value="submit" /></td>
-	</tr>
-    </table>
+	<img id="profile-img" class="profile-img-card center-block" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+	<input type='text' name='username' class="form-control" placeholder="Benutzername" required autofocus>
+	<input type='password' name='password' class="form-control" placeholder="Passwort" required>
+	<div id="remember" class="checkbox">
+	    <label>
+		<input type="checkbox" value="remember-me"> Remember me
+	    </label>
+	</div>
+	<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name="submit">Anmelden</button>
+    </div>
 </form>
