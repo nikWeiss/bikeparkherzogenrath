@@ -11,12 +11,10 @@
 
 <c:forEach items="${content}" var="test">
     <c:if test="${(count mod 2) == 0}">
-	<%--<c:out value="${count}" />--%>
 	<div class="clearfix visible-xx"></div>
-<!--	<div class="clearfix visible-md-block" />
-	<div class="clearfix visible-lg-block" />-->
     </c:if>
-    <div class="col-xs-12 col-sm-6 col-lg-6 row">
+
+    <div class="col-xs-12 col-sm-6 col-lg-6 well">
 	<div class="text-center">
 	    <h1>
 		${test.getHeader()}
@@ -54,7 +52,9 @@
 	    </table>
 	</sec:authorize>
     </div>
+	    
     <c:set var="count" value="${count+1}" />
+    
 </c:forEach>
 
 <sec:authorize access="hasRole('ADMIN')">
