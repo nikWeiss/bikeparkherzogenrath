@@ -74,8 +74,9 @@ public class DropboxFileHandler implements FileHandler {
 
     @Override
     public InputStream getImage(String path) {
+	String pathPrefix = "/Bikepark";
 	try {
-	    GetThumbnailBuilder thumbnailBuilder = this.client.files().getThumbnailBuilder(path);
+	    GetThumbnailBuilder thumbnailBuilder = this.client.files().getThumbnailBuilder(pathPrefix + path);
 	    thumbnailBuilder.withSize(ThumbnailSize.W640H480);
 	    DbxDownloader<FileMetadata> thumbnail = thumbnailBuilder.start();
 	    return thumbnail.getInputStream();
