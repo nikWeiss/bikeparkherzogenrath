@@ -14,4 +14,6 @@ public interface ProjectRepository extends MongoRepository<ProjectContent, BigIn
     public List<ProjectContent> findAllByOrderByIdDesc();
 
     public List<ProjectContent> findAllByOrderByIdAsc();
+
+    public ProjectContent findFirstByOrderByIdDesc();
 }

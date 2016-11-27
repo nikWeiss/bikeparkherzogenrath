@@ -40,13 +40,20 @@ public class ContentController {
 	return ret;
     }
 
-
     public List<Content> getContents(String module) {
 	List<Content> ret = new ArrayList<>();
-	if (module.equals("crew")) {
-	    ret.addAll(this.crewRepository.findAll());
-	} else if (module.equals("project")) {
-	    ret.addAll(this.projectRepository.findAllByOrderByIdDesc());
+	switch (module) {
+	    case "crew":
+		ret.addAll(this.crewRepository.findAll());
+		break;
+	    case "project":
+		ret.addAll(this.projectRepository.findAllByOrderByIdDesc());
+		break;
+	    case "index":
+		ret.add(this.projectRepository.findFirstByOrderByIdDesc());
+		break;
+	    default:
+		break;
 	}
 	return ret;
     }
