@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class WelcomeController {
-    
-    @Autowired 
+
+    @Autowired
     private ProjectRepository projectRepo;
 
     @Autowired
@@ -40,27 +40,5 @@ public class WelcomeController {
 	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
 	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
 	return "index";
-    }
-
-    @RequestMapping("/test")
-    public String jspTest(Model model) {
-	this.projectRepo.deleteAll();
-	
-	ProjectContent content = new ProjectContent();
-	content.setBody("Test Body");
-	content.setFooter("Test Footer");
-	content.setImage("Test Image");
-	this.projectRepo.save(content);
-	ProjectContent content2 = new ProjectContent();
-	content2.setBody("Test Body");
-	content2.setFooter("Test Footer");
-	content2.setImage("Test Image");
-	this.projectRepo.save(content2);
-	
-	for(ProjectContent single: this.projectRepo.findAll()){
-	    System.out.println(single);
-	}
-	
-	return "test/jsp-spring-boot";
     }
 }

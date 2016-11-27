@@ -36,6 +36,7 @@ public class ContentController {
 	List<NavContent> ret = new ArrayList<>();
 	ret.add(new NavContent("/login", "Anmelden", "!isAuthenticated()"));
 	ret.add(new NavContent("/register", "Registrierung", "!isAuthenticated()"));
+	ret.add(new NavContent("/logout", "Abmelden", "isAuthenticated()"));
 	return ret;
     }
 

@@ -19,23 +19,18 @@
 		</c:forEach>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
-
-		<sec:authorize access="!isAuthenticated()">
-		    <li>
-			<a href="/login">Login</a>
-		    </li>
-		    <li>
-			<a href="/register">Register</a>
-		    </li>
-		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
 		    <li>
 			<a><sec:authentication property="principal.username" /></a>
 		    </li>
-		    <li>
-			<a href="/logout">Logout</a>
-		    </li>
 		</sec:authorize>
+		<c:forEach items="${rightNavigation}" var="nav">
+		    <sec:authorize access="${nav.getAuthorization()}">
+			<li>
+			    <a href="${nav.getLink()}">${nav.getName()}</a>
+			</li>
+		    </sec:authorize>
+		</c:forEach>
 	    </ul>
 	</div>
     </div>

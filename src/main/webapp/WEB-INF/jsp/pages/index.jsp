@@ -5,6 +5,6 @@
 --%>
 
 <div class="row">
-    <img class="img-responsive" src="/photo?image=/crew/header.jpeg" style="min-width:100%; max-height:150%; " />
+    <img class="img-responsive img-rounded col-xs-4 col-sm-4 col-md-4 col-lg-4" src="/photo?image=/logo/logo.jpg" />
+    <img class="img-responsive img-rounded col-xs-8 col-sm-8 col-md-8 col-lg-8" src="/photo?image=/crew/header.jpeg" />
 </div>
-<h1>Index Test</h1>
