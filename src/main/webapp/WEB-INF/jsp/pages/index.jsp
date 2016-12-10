@@ -8,8 +8,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>	
 
 <div class="row">
-    <img class="img-responsive img-rounded col-xs-4 col-sm-4 col-md-4 col-lg-4" src="/image?image=/title/logo.jpg" />
-    <img class="img-responsive img-rounded col-xs-8 col-sm-8 col-md-8 col-lg-8" src="/image?image=/title/header.jpeg" />
+    <img class="img-responsive img-rounded col-xs-4 col-sm-4 col-md-4 col-lg-4" src="/image/large?image=/title/logo.jpg" />
+    <img class="img-responsive img-rounded col-xs-8 col-sm-8 col-md-8 col-lg-8" src="/image/large?image=/title/header.jpeg" />
 </div>
 <c:forEach items="${content}" var="test">
     <div class="row">
@@ -26,8 +26,9 @@
 		<img src="/image?image=${image}" class="img-responsive img-rounded" /> 
 	    </c:forEach>
 	</c:if>
-	<br />
-	${test.getBody()} 
+	<div>
+	    ${test.getBody()} 
+	</div>
 	<div class="text-right">
 	    <h4>
 		${test.getFooter()}
