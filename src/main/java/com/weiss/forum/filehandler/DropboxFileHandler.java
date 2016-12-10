@@ -36,12 +36,19 @@ public class DropboxFileHandler implements FileHandler {
     @Override
     public List<String> listFolders() {
 	List<String> folders = new ArrayList<>();
+	folders.addAll(this.listFolders(""));
+	return folders;
+    }
+
+    private List<String> listFolders(String folder) {
+	List<String> folders = new ArrayList<>();
 	try {
-	    ListFolderResult listFolder = this.client.files().listFolder("");
+	    ListFolderResult listFolder = this.client.files().listFolder(folder);
 	    while (true) {
 		for (Metadata metadata : listFolder.getEntries()) {
 		    if (metadata.getClass() == FolderMetadata.class) {
 			folders.add(metadata.getPathLower());
+			folders.addAll(this.listFolders(metadata.getPathLower()));
 		    }
 		}
 		if (!listFolder.getHasMore()) {
