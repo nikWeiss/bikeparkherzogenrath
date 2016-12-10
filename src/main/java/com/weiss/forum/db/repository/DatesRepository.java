@@ -7,6 +7,7 @@ package com.weiss.forum.db.repository;
 
 import com.weiss.forum.logic.DatesContent;
 import java.math.BigInteger;
+import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
@@ -15,4 +16,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface DatesRepository extends MongoRepository<DatesContent, BigInteger> {
 
+    public List<DatesContent> findAllByOrderByIdDesc();
+
+    public List<DatesContent> findAllByOrderByIdAsc();
 }

@@ -52,6 +52,9 @@ public class ContentController {
 	    case "index":
 		ret.add(this.projectRepository.findFirstByOrderByIdDesc());
 		break;
+	    case "dates":
+		ret.addAll(this.datesRepository.findAllByOrderByIdDesc());
+		break;
 	    default:
 		break;
 	}
