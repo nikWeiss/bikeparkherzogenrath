@@ -23,10 +23,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ImageController {
 
     @ResponseBody
-    @RequestMapping(value = "/photo", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-    public byte[] testphoto(@RequestParam String image) throws IOException {
+    @RequestMapping(value = "/image", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] image(@RequestParam String image) throws IOException {
 	DropboxFileHandler dropboxFileHandler = new DropboxFileHandler();
-	InputStream in = dropboxFileHandler.getImage("/" + image);
+	InputStream in = dropboxFileHandler.getImage(image);
+	return IOUtils.toByteArray(in);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/image/large", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] imageLarge(@RequestParam String image) throws IOException {
+	DropboxFileHandler dropboxFileHandler = new DropboxFileHandler();
+	InputStream in = dropboxFileHandler.getLargeImage(image);
 	return IOUtils.toByteArray(in);
     }
 }

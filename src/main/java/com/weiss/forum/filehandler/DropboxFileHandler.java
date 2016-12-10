@@ -4,12 +4,15 @@ import com.dropbox.core.DbxDownloader;
 import com.dropbox.core.DbxException;
 import com.dropbox.core.DbxRequestConfig;
 import com.dropbox.core.v2.DbxClientV2;
+import com.dropbox.core.v2.files.DownloadBuilder;
 import com.dropbox.core.v2.files.FileMetadata;
 import com.dropbox.core.v2.files.FolderMetadata;
+import com.dropbox.core.v2.files.GetMetadataBuilder;
 import com.dropbox.core.v2.files.GetThumbnailBuilder;
 import com.dropbox.core.v2.files.ListFolderResult;
 import com.dropbox.core.v2.files.Metadata;
 import com.dropbox.core.v2.files.ThumbnailSize;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,13 +85,31 @@ public class DropboxFileHandler implements FileHandler {
     @Override
     public InputStream getImage(String path) {
 	String pathPrefix = "/Bikepark";
+	String longpath = pathPrefix + path;
+	longpath = longpath.replace("//", "/");
+	
 	try {
-	    GetThumbnailBuilder thumbnailBuilder = this.client.files().getThumbnailBuilder(pathPrefix + path);
+	    GetThumbnailBuilder thumbnailBuilder = this.client.files().getThumbnailBuilder(longpath);
 	    thumbnailBuilder.withSize(ThumbnailSize.W640H480);
 	    DbxDownloader<FileMetadata> thumbnail = thumbnailBuilder.start();
 	    return thumbnail.getInputStream();
 	} catch (DbxException ex) {
-	    LOGGER.log(Level.WARNING, "The dropboxconnection is not working right for image: " + path);
+	    LOGGER.log(Level.WARNING, "The dropboxconnection is not working right for image: " + longpath);
+	    return null;
+	}
+    }
+
+    @Override
+    public InputStream getLargeImage(String path) {
+	String pathPrefix = "/Bikepark";
+	String longpath = pathPrefix + path;
+	longpath = longpath.replace("//", "/");
+	
+	try {
+	    DbxDownloader<FileMetadata> download = this.client.files().download(longpath);
+	    return download.getInputStream();
+	} catch (DbxException ex) {
+	    LOGGER.log(Level.WARNING, "The dropboxconnection is not working right for image: " + longpath);
 	    return null;
 	}
     }

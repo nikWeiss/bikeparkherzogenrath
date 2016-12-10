@@ -27,7 +27,7 @@
 	<div class="row">
 	    <c:if test="${test.isImageSet()}">
 		<div class="col-sm-4 col-xs-5">
-		    <img src="/photo?image=${test.getImage()}" class="img-responsive img-rounded" /> 
+		    <img src="/image?image=${test.getImage()}" class="img-responsive img-rounded" /> 
 		</div>
 	    </c:if>
 	    <div class="col-sm-8 col-xs-7">
