@@ -116,6 +116,12 @@
 	    <version>4.1.3.RELEASE</version>
 	    <type>jar</type>
 	</dependency>
+        <dependency>
+            <groupId>com.weiss</groupId>
+            <artifactId>bikeparkherzogenrath</artifactId>
+            <version>1.0</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     
     <build>
