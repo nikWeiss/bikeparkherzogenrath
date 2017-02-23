@@ -9,6 +9,8 @@
 
 <c:set var="count" value="0" />
 <div>
+    <sec:authorize>
+    </sec:authorize>
     <sec:authorize access="hasRole('ADMIN')">
 	<div class="row col-xs-12">
 	    <form action="/project/add" method="GET">

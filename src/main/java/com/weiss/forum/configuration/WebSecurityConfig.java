@@ -1,5 +1,6 @@
 package com.weiss.forum.configuration;
 
+import com.weiss.forum.security.MongoUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +10,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  *
@@ -20,15 +20,18 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Bean
+    public MongoUserDetailsService getService() {
+	return new MongoUserDetailsService();
+    }
+
+    @Autowired
+    private MongoUserDetailsService service;
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	auth.inMemoryAuthentication()
-		.withUser("admin")
-		.password("adminpw")
-		.roles("ADMIN", "USER")
-		.and()
-		.withUser("user")
-		.password("password").roles("USER");
+	auth
+		.userDetailsService(service);
     }
 
     @Bean
