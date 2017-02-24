@@ -5,17 +5,11 @@
 --%>
 
 <form name='f' action="login" method='POST'>
-    <h1>Login</h1>
     <div class="container card card-container">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<img id="profile-img" class="profile-img-card center-block" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
 	<input type='text' name='username' class="form-control" placeholder="Benutzername" required autofocus>
 	<input type='password' name='password' class="form-control" placeholder="Passwort" required>
-	<div id="remember" class="checkbox">
-	    <label>
-		<input type="checkbox" value="remember-me"> Remember me
-	    </label>
-	</div>
 	<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name="submit">Anmelden</button>
     </div>
 </form>

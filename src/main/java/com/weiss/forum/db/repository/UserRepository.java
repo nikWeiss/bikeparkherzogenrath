@@ -10,5 +10,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface UserRepository extends MongoRepository<MyUser, BigInteger> {
 
-    public MyUser findFirstByUsername(String username);
+    public MyUser findByUsername(String username);
 }

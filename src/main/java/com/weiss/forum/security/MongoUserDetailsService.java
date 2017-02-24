@@ -22,16 +22,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 public class MongoUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private MongoClient mongoClient;
-
-    @Autowired
     private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-	MyUser user = this.userRepository.findFirstByUsername(username);
-	User springUser = user.getSpringUser();
-	return springUser;
+	MyUser user = this.userRepository.findByUsername(username);
+	if (user != null) {
+	    return user.getSpringUser();
+	}
+	throw new UsernameNotFoundException("Username " + username + " not found.");
     }
 
 }
