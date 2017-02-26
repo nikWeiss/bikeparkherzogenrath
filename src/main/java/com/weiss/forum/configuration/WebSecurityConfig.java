@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  *
@@ -20,18 +22,27 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private MongoUserDetailsService service;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Bean(name = "passwordEncoder")
+    public PasswordEncoder passwordencoder() {
+	return new BCryptPasswordEncoder();
+    }
+
     @Bean
     public MongoUserDetailsService getService() {
 	return new MongoUserDetailsService();
     }
 
     @Autowired
-    private MongoUserDetailsService service;
-
-    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 	auth
-		.userDetailsService(service);
+		.userDetailsService(this.service)
+		.passwordEncoder(this.passwordEncoder);
     }
 
     @Bean
