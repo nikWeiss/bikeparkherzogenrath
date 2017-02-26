@@ -28,11 +28,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Bean(name = "passwordEncoder")
-    public PasswordEncoder passwordencoder() {
-	return new BCryptPasswordEncoder();
-    }
-
     @Bean
     public MongoUserDetailsService getService() {
 	return new MongoUserDetailsService();
