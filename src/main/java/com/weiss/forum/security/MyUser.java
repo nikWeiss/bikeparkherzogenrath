@@ -22,6 +22,13 @@ public class MyUser implements UserDetails, CredentialsContainer {
     private boolean credentialsNonExpired;
     private boolean enabled;
 
+    public MyUser() {
+	this.accountNonExpired = true;
+	this.accountNonLocked = true;
+	this.credentialsNonExpired = true;
+	this.enabled = true;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 	return this.authorities;

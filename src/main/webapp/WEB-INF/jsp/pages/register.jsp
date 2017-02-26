@@ -19,4 +19,7 @@
 	<form:password path="password" value="${user.getPassword()}" class="form-control"/>
     </div>
     <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name="submit">Registrierung</button>
+    <c:if test="${message != null}">
+	<h1>${message}</h1>
+    </c:if >
 </form:form>
