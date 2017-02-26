@@ -40,7 +40,6 @@ public class RegisterController {
     public String registerPost(ModelMap model, @ModelAttribute("user") MyUser user) {
 	
 	MyUser findByUsername = this.userRepository.findByUsername(user.getUsername());
-	System.out.println(findByUsername);
 	if(findByUsername == null)
 	{
 	    user.setAuthorities(Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
