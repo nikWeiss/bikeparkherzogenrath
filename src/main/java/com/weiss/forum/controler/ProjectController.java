@@ -2,11 +2,13 @@ package com.weiss.forum.controler;
 
 import com.weiss.forum.db.repository.ProjectRepository;
 import com.weiss.forum.logic.ContentController;
-import com.weiss.forum.logic.CrewContent;
 import com.weiss.forum.logic.ProjectContent;
 import java.math.BigInteger;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -31,12 +34,25 @@ public class ProjectController {
     private ProjectRepository projectRepository;
 
     @RequestMapping("/project")
-    public String project(ModelMap model) {
+    public ModelAndView redirectProject(ModelMap model) {
+	return new ModelAndView("redirect:/project/1", model);
+    }
+
+    @RequestMapping("/project/{pageNumber}")
+    public String project(@PathVariable Integer pageNumber, ModelMap model) {
 	LOGGER.info("/project is called");
+
+	Page<ProjectContent> page = this.getProjectContent(pageNumber);
+	int current = page.getNumber() + 1;
+	int begin = Math.max(1, current - 5);
+	int end = Math.min(begin + 10, page.getTotalPages());
 
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "project");
-	model.addAttribute("content", this.contentController.getContents("project"));
+	model.addAttribute("content", page);
+	model.addAttribute("beginIndex", begin);
+	model.addAttribute("endIndex", end);
+	model.addAttribute("currentIndex", current);
 	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
 	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
 	return "index";
@@ -49,7 +65,7 @@ public class ProjectController {
 
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "edit/project");
-	model.addAttribute("content", this.contentController.getContents("crew"));
+	model.addAttribute("content", this.contentController.getContents("project"));
 	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
 	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
 	model.addAttribute("project", this.projectRepository.findOne(id));
@@ -72,7 +88,7 @@ public class ProjectController {
 
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "edit/project");
-	model.addAttribute("content", this.contentController.getContents("crew"));
+	model.addAttribute("content", this.contentController.getContents("project"));
 	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
 	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
 	model.addAttribute("project", new ProjectContent());
@@ -86,5 +102,10 @@ public class ProjectController {
 
 	this.projectRepository.save(project);
 	return "redirect:/project";
+    }
+
+    private Page<ProjectContent> getProjectContent(int page) {
+	PageRequest request = new PageRequest(page - 1, 4, Sort.Direction.DESC, "id");
+	return this.projectRepository.findAll(request);
     }
 }

@@ -7,6 +7,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>	
 
+<c:url var="firstUrl" value="/project/1" />
+<c:url var="lastUrl" value="/project/${deploymentLog.totalPages}" />
+<c:url var="prevUrl" value="/project/${currentIndex - 1}" />
+<c:url var="nextUrl" value="/project/${currentIndex + 1}" />
+
 <c:set var="count" value="0" />
 <div>
     <sec:authorize access="hasRole('ADMIN')">
@@ -17,7 +22,7 @@
 	</div>
     </sec:authorize>
 
-    <c:forEach items="${content}" var="test">
+    <c:forEach items="${content.getContent()}" var="test">
 	<c:if test="${(count mod 2) == 0}">
 	    <div class="clearfix visible-xx"></div>
 	</c:if>
@@ -93,5 +98,15 @@
 	<c:set var="count" value="${count+1}" />
 
     </c:forEach>
+
+    <div class="clearfix visible-xx"></div>
+    <ul class="pager">
+	<c:if test="${currentIndex > 1}">
+	    <li class="previous"><a href="/project/${currentIndex - 1}">Neuere</a></li>
+	</c:if>
+	<c:if test="${currentIndex < content.totalPages}">
+	    <li class="next"><a href="/project/${currentIndex + 1}">Ältere</a></li>
+	</c:if>
+    </ul>
 
 </div>
