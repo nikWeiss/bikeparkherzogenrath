@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Niklas
  */
 @Controller
-public class DatesController {
-
-    @Autowired
-    private ContentController contentController;
+public class DatesController extends MyController {
 
     @RequestMapping("/dates")
     public String dates(ModelMap model) {

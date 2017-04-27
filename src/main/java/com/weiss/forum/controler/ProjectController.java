@@ -1,7 +1,6 @@
 package com.weiss.forum.controler;
 
 import com.weiss.forum.db.repository.ProjectRepository;
-import com.weiss.forum.logic.ContentController;
 import com.weiss.forum.logic.ProjectContent;
 import java.math.BigInteger;
 import org.apache.log4j.Logger;
@@ -23,12 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Niklas
  */
 @Controller
-public class ProjectController {
+public class ProjectController extends MyController {
 
     private static Logger LOGGER = Logger.getLogger(ProjectController.class);
-
-    @Autowired
-    private ContentController contentController;
 
     @Autowired
     private ProjectRepository projectRepository;

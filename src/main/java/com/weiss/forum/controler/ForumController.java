@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Niklas
  */
 @Controller
-public class ForumController {
-
-    @Autowired
-    private ContentController contentController;
+public class ForumController extends MyController {
 
     @RequestMapping("/forum")
     @PreAuthorize("hasRole('ROLE_ADMIN')")

@@ -3,6 +3,7 @@ package com.weiss.forum.controler;
 import com.weiss.forum.db.repository.CrewRepository;
 import com.weiss.forum.logic.ContentController;
 import com.weiss.forum.logic.CrewContent;
+import java.lang.annotation.Annotation;
 import java.math.BigInteger;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +20,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Niklas
  */
 @Controller
-public class CrewController {
+public class CrewController extends MyController {
 
     private static Logger LOGGER = Logger.getLogger(CrewController.class);
 
     @Autowired
     private CrewRepository crewRepository;
-
-    @Autowired
-    private ContentController contentController;
 
     @RequestMapping("/crew")
     public String crew(ModelMap model) {

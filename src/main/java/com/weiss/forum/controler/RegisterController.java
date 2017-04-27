@@ -1,7 +1,6 @@
 package com.weiss.forum.controler;
 
 import com.weiss.forum.db.repository.UserRepository;
-import com.weiss.forum.logic.ContentController;
 import com.weiss.forum.security.MyUser;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @author Niklas
  */
 @Controller
-public class RegisterController {
-
-    @Autowired
-    private ContentController contentController;
+public class RegisterController extends MyController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
