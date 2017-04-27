@@ -36,8 +36,7 @@ public class CrewController {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "crew");
 	model.addAttribute("content", this.contentController.getContents("crew"));
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
+	this.contentController.setNavigation(model);
 	return "index";
     }
 
@@ -49,8 +48,7 @@ public class CrewController {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "edit/crew");
 	model.addAttribute("content", this.contentController.getContents("crew"));
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
+	this.contentController.setNavigation(model);
 	model.addAttribute("crew", this.crewRepository.findOne(id));
 	return "index";
     }
@@ -72,8 +70,7 @@ public class CrewController {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "edit/crew");
 	model.addAttribute("content", this.contentController.getContents("crew"));
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
+	this.contentController.setNavigation(model);
 	model.addAttribute("crew", new CrewContent());
 	return "index";
     }

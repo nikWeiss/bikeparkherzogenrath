@@ -6,6 +6,7 @@ import com.weiss.forum.db.repository.ProjectRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 
 /**
  *
@@ -59,5 +60,10 @@ public class ContentController {
 		break;
 	}
 	return ret;
+    }
+
+    public void setNavigation(ModelMap model) {
+	model.addAttribute("leftNavigation", this.getLeftNavigation());
+	model.addAttribute("rightNavigation", this.getRightNaviation());
     }
 }

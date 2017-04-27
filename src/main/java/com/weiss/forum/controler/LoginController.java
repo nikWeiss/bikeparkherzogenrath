@@ -23,8 +23,7 @@ public class LoginController {
     public String login(ModelMap model) {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "login");
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
+	this.contentController.setNavigation(model);
 	
 	return "index";
     }
@@ -36,8 +35,7 @@ public class LoginController {
 
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "index");
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
+	this.contentController.setNavigation(model);
 
 	return "index";
     }

@@ -23,8 +23,7 @@ public class WelcomeController {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "index");
 	model.addAttribute("content", this.contentController.getContents("index"));
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
+	this.contentController.setNavigation(model);
 	return "index";
     }
 
@@ -34,8 +33,7 @@ public class WelcomeController {
 	model.addAttribute("title", "Bikepark Herzogenrath Admin");
 	model.addAttribute("site", "index");
 	model.addAttribute("content", this.contentController.getContents("index"));
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
+	this.contentController.setNavigation(model);
 	return "index";
     }
 }
