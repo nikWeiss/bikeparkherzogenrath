@@ -34,8 +34,8 @@ public class RegisterController {
 	model.addAttribute("user", new MyUser());
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "register");
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
 
 	return "index";
     }
@@ -60,8 +60,8 @@ public class RegisterController {
 
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "register");
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
 
 	return "index";
     }

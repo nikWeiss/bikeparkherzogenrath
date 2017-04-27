@@ -2,11 +2,9 @@ package com.weiss.forum.controler;
 
 import com.weiss.forum.db.repository.ProjectRepository;
 import com.weiss.forum.logic.ContentController;
-import com.weiss.forum.logic.ProjectContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WelcomeController {
 
     @Autowired
-    private ProjectRepository projectRepo;
-
-    @Autowired
     private ContentController contentController;
 
     @RequestMapping("/")
@@ -28,8 +23,8 @@ public class WelcomeController {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "index");
 	model.addAttribute("content", this.contentController.getContents("index"));
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
 	return "index";
     }
 
@@ -39,8 +34,8 @@ public class WelcomeController {
 	model.addAttribute("title", "Bikepark Herzogenrath Admin");
 	model.addAttribute("site", "index");
 	model.addAttribute("content", this.contentController.getContents("index"));
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
 	return "index";
     }
 }

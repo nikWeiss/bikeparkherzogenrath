@@ -53,8 +53,8 @@ public class ProjectController {
 	model.addAttribute("beginIndex", begin);
 	model.addAttribute("endIndex", end);
 	model.addAttribute("currentIndex", current);
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
 	return "index";
     }
 
@@ -66,8 +66,8 @@ public class ProjectController {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "edit/project");
 	model.addAttribute("content", this.contentController.getContents("project"));
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
 	model.addAttribute("project", this.projectRepository.findOne(id));
 	return "index";
     }
@@ -89,8 +89,8 @@ public class ProjectController {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "edit/project");
 	model.addAttribute("content", this.contentController.getContents("project"));
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
 	model.addAttribute("project", new ProjectContent());
 	return "index";
     }

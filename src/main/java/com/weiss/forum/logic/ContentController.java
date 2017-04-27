@@ -22,7 +22,7 @@ public class ContentController {
     @Autowired
     private ProjectRepository projectRepository;
 
-    public List<NavContent> getLeftNavigation(String language) {
+    public List<NavContent> getLeftNavigation() {
 	List<NavContent> ret = new ArrayList<>();
 	ret.add(new NavContent("/", "Bikepark Herzogenrath", "permitAll()"));
 	ret.add(new NavContent("/project", "Projekt", "permitAll()"));
@@ -32,7 +32,7 @@ public class ContentController {
 	return ret;
     }
 
-    public List<NavContent> getRightNaviation(String language) {
+    public List<NavContent> getRightNaviation() {
 	List<NavContent> ret = new ArrayList<>();
 	ret.add(new NavContent("/login", "Anmelden", "!isAuthenticated()"));
 	ret.add(new NavContent("/register", "Registrierung", "!isAuthenticated()"));

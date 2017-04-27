@@ -21,8 +21,8 @@ public class DatesController {
 	model.addAttribute("title", "Bikepark Herzogenrath");
 	model.addAttribute("site", "dates");
 	model.addAttribute("content", this.contentController.getContents("dates"));
-	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation("ger"));
-	model.addAttribute("rightNavigation", this.contentController.getRightNaviation("ger"));
+	model.addAttribute("leftNavigation", this.contentController.getLeftNavigation());
+	model.addAttribute("rightNavigation", this.contentController.getRightNaviation());
 	return "index";
     }
 }
