@@ -1,9 +1,7 @@
 package com.weiss.forum.controler;
 
 import com.weiss.forum.db.repository.CrewRepository;
-import com.weiss.forum.logic.ContentController;
 import com.weiss.forum.logic.CrewContent;
-import java.lang.annotation.Annotation;
 import java.math.BigInteger;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +28,10 @@ public class CrewController extends MyController {
     @RequestMapping("/crew")
     public String crew(ModelMap model) {
 	LOGGER.info("/crew is called");
-
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "crew");
-	model.addAttribute("content", this.contentController.getContents("crew"));
+	
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "crew");
 	this.contentController.setNavigation(model);
+	model.addAttribute("content", this.contentController.getContents("crew"));
 	return "index";
     }
 
@@ -43,10 +40,9 @@ public class CrewController extends MyController {
     public String edit(ModelMap model, @PathVariable BigInteger id) {
 	LOGGER.info("/crew/edit/" + id + " is called");
 
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "edit/crew");
-	model.addAttribute("content", this.contentController.getContents("crew"));
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "edit/crew");
 	this.contentController.setNavigation(model);
+	model.addAttribute("content", this.contentController.getContents("crew"));
 	model.addAttribute("crew", this.crewRepository.findOne(id));
 	return "index";
     }
@@ -65,10 +61,9 @@ public class CrewController extends MyController {
     public String addGet(ModelMap model) {
 	LOGGER.info("/crew/add/ is called GET");
 
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "edit/crew");
-	model.addAttribute("content", this.contentController.getContents("crew"));
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "edit/crew");
 	this.contentController.setNavigation(model);
+	model.addAttribute("content", this.contentController.getContents("crew"));
 	model.addAttribute("crew", new CrewContent());
 	return "index";
     }

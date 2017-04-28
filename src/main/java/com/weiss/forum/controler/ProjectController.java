@@ -43,8 +43,7 @@ public class ProjectController extends MyController {
 	int begin = Math.max(1, current - 5);
 	int end = Math.min(begin + 10, page.getTotalPages());
 
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "project");
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "project");
 	model.addAttribute("content", page);
 	model.addAttribute("beginIndex", begin);
 	model.addAttribute("endIndex", end);
@@ -58,10 +57,9 @@ public class ProjectController extends MyController {
     public String edit(ModelMap model, @PathVariable BigInteger id) {
 	LOGGER.info("/project/edit/" + id + " is called");
 
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "edit/project");
-	model.addAttribute("content", this.contentController.getContents("project"));
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "edit/project");
 	this.contentController.setNavigation(model);
+	model.addAttribute("content", this.contentController.getContents("project"));
 	model.addAttribute("project", this.projectRepository.findOne(id));
 	return "index";
     }
@@ -80,8 +78,7 @@ public class ProjectController extends MyController {
     public String addGet(ModelMap model) {
 	LOGGER.info("/project/add/ is called GET");
 
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "edit/project");
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "edit/project");
 	model.addAttribute("content", this.contentController.getContents("project"));
 	this.contentController.setNavigation(model);
 	model.addAttribute("project", new ProjectContent());

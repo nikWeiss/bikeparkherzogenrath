@@ -16,8 +16,7 @@ public class LoginController extends MyController {
 
     @RequestMapping("/login")
     public String login(ModelMap model) {
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "login");
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "login");
 	this.contentController.setNavigation(model);
 
 	return "index";
@@ -28,8 +27,7 @@ public class LoginController extends MyController {
     public String logout(ModelMap model, HttpServletRequest request) throws ServletException {
 	request.logout();
 
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "index");
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "index");
 	this.contentController.setNavigation(model);
 
 	return "index";

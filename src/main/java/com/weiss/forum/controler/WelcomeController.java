@@ -14,8 +14,7 @@ public class WelcomeController extends MyController {
 
     @RequestMapping("/")
     public String index(ModelMap model) {
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "index");
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "index");
 	model.addAttribute("content", this.contentController.getContents("index"));
 	this.contentController.setNavigation(model);
 	return "index";
@@ -24,8 +23,7 @@ public class WelcomeController extends MyController {
     @RequestMapping("/admin")
     @PreAuthorize("hasRole('ADMIN')")
     public String admin(ModelMap model) {
-	model.addAttribute("title", "Bikepark Herzogenrath Admin");
-	model.addAttribute("site", "index");
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath Admin", "index");
 	model.addAttribute("content", this.contentController.getContents("index"));
 	this.contentController.setNavigation(model);
 	return "index";

@@ -28,8 +28,7 @@ public class RegisterController extends MyController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(ModelMap model) {
 	model.addAttribute("user", new MyUser());
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "register");
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "register");
 	this.contentController.setNavigation(model);
 
 	return "index";
@@ -53,8 +52,7 @@ public class RegisterController extends MyController {
 	    model.addAttribute("message", "Benutzername oder Passwort ist nicht gesetzt.");
 	}
 
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "register");
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "register");
 	this.contentController.setNavigation(model);
 
 	return "index";

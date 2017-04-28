@@ -15,8 +15,7 @@ public class DatesController extends MyController {
 
     @RequestMapping("/dates")
     public String dates(ModelMap model) {
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "dates");
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "dates");
 	model.addAttribute("content", this.contentController.getContents("dates"));
 	this.contentController.setNavigation(model);
 	return "index";

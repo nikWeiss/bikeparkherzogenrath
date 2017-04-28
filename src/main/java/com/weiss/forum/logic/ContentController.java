@@ -66,4 +66,9 @@ public class ContentController {
 	model.addAttribute("leftNavigation", this.getLeftNavigation());
 	model.addAttribute("rightNavigation", this.getRightNaviation());
     }
+
+    public void setHeaders(ModelMap model, String title, String site) {
+	model.addAttribute("title", title);
+	model.addAttribute("site", site);
+    }
 }

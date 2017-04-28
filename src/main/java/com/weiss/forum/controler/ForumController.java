@@ -17,8 +17,7 @@ public class ForumController extends MyController {
     @RequestMapping("/forum")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String forum(ModelMap model) {
-	model.addAttribute("title", "Bikepark Herzogenrath");
-	model.addAttribute("site", "forum");
+	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "forum");
 	this.contentController.setNavigation(model);
 	return "index";
     }
