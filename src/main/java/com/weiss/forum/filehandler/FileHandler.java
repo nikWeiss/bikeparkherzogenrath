@@ -12,9 +12,9 @@ public interface FileHandler {
     public List<String> listFolders();
 
     public List<String> listFilesOfFolder(String folder);
-    
+
     public InputStream getImage(String path);
-    
+
     public InputStream getLargeImage(String path);
 
 }

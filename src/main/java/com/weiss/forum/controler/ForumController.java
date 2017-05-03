@@ -1,7 +1,5 @@
 package com.weiss.forum.controler;
 
-import com.weiss.forum.logic.ContentController;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

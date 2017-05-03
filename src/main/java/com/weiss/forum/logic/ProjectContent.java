@@ -1,8 +1,5 @@
 package com.weiss.forum.logic;
 
-import java.util.Arrays;
-import org.apache.log4j.Logger;
-
 /**
  *
  * @author Niklas
@@ -29,5 +26,10 @@ public class ProjectContent extends Content {
 
     public String[] getImageListArray() {
 	return this.getImage().split(";");
+    }
+
+    public void setImageListArray(String[] imagelist) {
+	String join = String.join(";", imagelist);
+	this.setImage(join);
     }
 }

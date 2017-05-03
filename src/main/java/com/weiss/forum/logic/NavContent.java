@@ -5,7 +5,7 @@ package com.weiss.forum.logic;
  * @author Niklas
  */
 public class NavContent {
-    
+
     private String link;
     private String name;
     private String authorization;

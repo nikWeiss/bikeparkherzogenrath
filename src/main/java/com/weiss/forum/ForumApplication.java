@@ -18,7 +18,7 @@ import org.springframework.context.ApplicationContext;
 public class ForumApplication {
 
     private static final Logger LOGGER = Logger.getLogger(ForumApplication.class.getName());
-    
+
     /**
      * start the springboot application
      *
@@ -26,6 +26,6 @@ public class ForumApplication {
      */
     public static void main(String[] args) {
 	ApplicationContext ctx = SpringApplication.run(ForumApplication.class, args);
-	
+
     }
 }

@@ -28,7 +28,7 @@ public class CrewController extends MyController {
     @RequestMapping("/crew")
     public String crew(ModelMap model) {
 	LOGGER.info("/crew is called");
-	
+
 	this.contentController.setHeaders(model, "Bikepark Herzogenrath", "crew");
 	this.contentController.setNavigation(model);
 	model.addAttribute("content", this.contentController.getContents("crew"));
