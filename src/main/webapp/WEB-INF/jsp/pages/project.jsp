@@ -34,7 +34,7 @@
 		</h1>
 	    </div>
 	    <c:if test="${test.isImageSet()}">
-		<img src="/image?image=${test.getImage()}" class="img-responsive img-rounded" /> 
+		<img src="/image?image=${test.getImage()}" class="img-responsive img-rounded img-wide" /> 
 	    </c:if>
 	    <c:if test="${test.isImageListSet()}">
 		<div id="${test.getId()}" class="carousel">
@@ -49,12 +49,12 @@
 			<c:forEach items="${test.getImageListArray()}" var="image">
 			    <c:if test="${imgcnt == 0}">
 				<div class="item active">
-				    <img src="/image?image=${image}" alt="${image}" />
+				    <img src="/image?image=${image}" alt="${image}" class="img-responsive img-wide"/>
 				</div>
 			    </c:if>
 			    <c:if test="${imgcnt != 0}">
 				<div class="item">
-				    <img src="/image?image=${image}" alt="${image}"/>
+				    <img src="/image?image=${image}" alt="${image}"class="img-responsive img-wide"/>
 				</div>
 			    </c:if>
 			    <c:set var="imgcnt" value="${imgcnt+1}" />
@@ -103,10 +103,10 @@
     <ul class="pager">
 	<c:if test="${currentIndex > 1}">
 	    <li class="previous"><a href="/project/${currentIndex - 1}">Neuere</a></li>
-	</c:if>
-	<c:if test="${currentIndex < content.totalPages}">
+	    </c:if>
+	    <c:if test="${currentIndex < content.totalPages}">
 	    <li class="next"><a href="/project/${currentIndex + 1}">Ältere</a></li>
-	</c:if>
+	    </c:if>
     </ul>
 
 </div>
