@@ -27,7 +27,7 @@ public class ContentController {
 	List<NavContent> ret = new ArrayList<>();
 	ret.add(new NavContent("/", "Bikepark Herzogenrath", "permitAll()"));
 	ret.add(new NavContent("/project", "Projekt", "permitAll()"));
-	ret.add(new NavContent("/dates", "Termine", "permitAll()"));
+//	ret.add(new NavContent("/dates", "Termine", "permitAll()"));
 	ret.add(new NavContent("/crew", "Team", "permitAll()"));
 //	ret.add(new NavContent("/forum", "Forum", "isAuthenticated()"));
 	return ret;
