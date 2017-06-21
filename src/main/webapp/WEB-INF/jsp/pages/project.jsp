@@ -15,98 +15,106 @@
 <c:set var="count" value="0" />
 <div>
     <sec:authorize access="hasRole('ADMIN')">
-	<div class="row col-xs-12">
-	    <form action="/project/add" method="GET">
-		<button class="btn btn-default btn-lg glyphicon glyphicon-plus" type="submit" />
-	    </form>
-	</div>
+        <div class="row col-xs-12">
+            <form action="/project/add" method="GET">
+                <button class="btn btn-default btn-lg glyphicon glyphicon-plus" type="submit" />
+            </form>
+        </div>
     </sec:authorize>
 
-    <c:forEach items="${content.getContent()}" var="test">
-	<c:if test="${(count mod 2) == 0}">
-	    <div class="clearfix visible-xx"></div>
-	</c:if>
+    <div class="row">
+        <c:forEach items="${content.getContent()}" var="test">
+            <c:if test="${(count mod 2) == 0}">
+                <br />
+                <!--<div class="clearfix visible-xx"></div>-->
+            </c:if>
+            
+            <div class="ol-xs-12 col-sm-6">
+                <div class="card">
+                    <div class="card-block">
+                        <h1 class="card-title">
+                            ${test.getHeader()}
+                        </h1>
+                    </div>
+                    <c:if test="${test.isImageSet()}">
+                        <img src="/image?image=${test.getImage()}" class="img-responsive img-rounded img-wide" /> 
+                    </c:if>
+                    <c:if test="${test.isImageListSet()}">
+                        <div id="carousel-${test.getId()}" class="carousel slide carousel-fade white-text" data-ride="carousel" data-interval="false" style="width: 100%;">
+                            <ol class="carousel-indicators">
+                                <c:set var="imgcnt" value="0" />
+                                <c:forEach items="${test.getImageListArray()}" var="image">
+                                    <li data-target="#carousel-${test.getId()}" data-slide-to="${imgcnt}" />
+                                    <c:set var="imgcnt" value="${imgcnt+1}" />
+                                </c:forEach>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <c:set var="imgcnt" value="0" />
+                                <c:forEach items="${test.getImageListArray()}" var="image">
+                                    <c:if test="${imgcnt == 0}">
+                                        <div class="carousel-item active view hm-black-light" style="background-image: url('/image?image=${image}'); background-repeat: no-repeat; background-size: cover;" alt="${image}">
+                                        </div> 
+                                    </c:if>
+                                    <c:if test="${imgcnt != 0}">
+                                        <div class="carousel-item view hm-black-light" style="background-image: url('/image?image=${image}'); background-repeat: no-repeat; background-size: cover;" alt="${image}">
+                                        </div>
+                                    </c:if>
+                                    <c:set var="imgcnt" value="${imgcnt+1}" />
+                                </c:forEach>
+                            </div>
+                            <a class="carousel-control-prev" href="#carousel-${test.getId()}" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel-${test.getId()}" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </c:if>
 
-	<div class="col-xs-12 col-sm-6 col-lg-6 well">
-	    <div class="text-center">
-		<h1>
-		    ${test.getHeader()}
-		</h1>
-	    </div>
-	    <c:if test="${test.isImageSet()}">
-		<img src="/image?image=${test.getImage()}" class="img-responsive img-rounded img-wide" /> 
-	    </c:if>
-	    <c:if test="${test.isImageListSet()}">
-		<div id="${test.getId()}" class="carousel">
-		    <ol class="carousel-indicators">
-			<c:forEach items="${test.getImageListArray()}" var="image">
-			    <li data-target="#${test.getId()}" data-slide-to="${imgcnt}" />
-			    <c:set var="imgcnt" value="${imgcnt+1}" />
-			</c:forEach>
-		    </ol>
-		    <div class="carousel-inner" role="listbox">
-			<c:set var="imgcnt" value="0" />
-			<c:forEach items="${test.getImageListArray()}" var="image">
-			    <c:if test="${imgcnt == 0}">
-				<div class="item active">
-				    <img src="/image?image=${image}" alt="${image}" class="img-responsive img-wide"/>
-				</div>
-			    </c:if>
-			    <c:if test="${imgcnt != 0}">
-				<div class="item">
-				    <img src="/image?image=${image}" alt="${image}"class="img-responsive img-wide"/>
-				</div>
-			    </c:if>
-			    <c:set var="imgcnt" value="${imgcnt+1}" />
-			</c:forEach>
-		    </div>
-		    <a class="left carousel-control" href="#${test.getId()}" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		    </a>
-		    <a class="right carousel-control" href="#${test.getId()}" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		    </a>
-		</div>
-	    </c:if>
-	    <br />
-	    ${test.getBody()} 
-	    <div class="text-right">
-		<h4>
-		    ${test.getFooter()}
-		</h4>
-	    </div>
-	    <sec:authorize access="hasRole('ADMIN')">
-		<table>
-		    <tr>
-			<td>
-			    <form action="/project/edit/${test.getId()}" method="GET">
-				<button type="submit" class="btn btn-warning btn-lg glyphicon glyphicon-edit" />
-			    </form>
-			</td>
-			<td>
-			    <form action="/project/delete/${test.getId()}" method="GET">
-				<button type="submit" class="btn btn-danger btn-lg glyphicon glyphicon-remove" />
-			    </form>
-			</td>
-		    </tr>
-		</table>
-	    </sec:authorize>
-	</div>
+                    <div class="card-block">
+                        <p class="card-text">${test.getBody()}</p>
+                        <div class="text-right">
+                            <p class="card-text">${test.getFooter()}</p>
+                        </div>
+                    </div>
 
-	<c:set var="count" value="${count+1}" />
+                    <sec:authorize access="hasRole('ADMIN')">
+                        <table>
+                            <tr>
+                                <td>
+                                    <form action="/project/edit/${test.getId()}" method="GET">
+                                        <button type="submit" class="btn btn-warning btn-lg glyphicon glyphicon-edit" />
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/project/delete/${test.getId()}" method="GET">
+                                        <button type="submit" class="btn btn-danger btn-lg glyphicon glyphicon-remove" />
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                    </sec:authorize>
+                </div>
+            </div>    
+            <c:set var="count" value="${count+1}" />
 
-    </c:forEach>
+        </c:forEach>
+    </div>
 
     <div class="clearfix visible-xx"></div>
     <ul class="pager">
-	<c:if test="${currentIndex > 1}">
-	    <li class="previous"><a href="/project/${currentIndex - 1}">Neuere</a></li>
-	    </c:if>
-	    <c:if test="${currentIndex < content.totalPages}">
-	    <li class="next"><a href="/project/${currentIndex + 1}">Ältere</a></li>
-	    </c:if>
+        <c:if test="${currentIndex > 1}">
+            <li class="previous">
+                <a href="/project/${currentIndex - 1}">Neuere</a>
+            </li>
+        </c:if>
+        <c:if test="${currentIndex < content.totalPages}">
+            <li class="next">
+                <a href="/project/${currentIndex + 1}">Ältere</a>
+            </li>
+        </c:if>
     </ul>
 
 </div>
