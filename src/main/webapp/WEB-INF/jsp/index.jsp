@@ -12,6 +12,10 @@
 
         <body>
 	    <jsp:include page="headerfooter/navbar.jsp" flush="true" />
+	    
+	    <br />
+	    <br />
+	    
 	    <jsp:include page="pages/${site}.jsp" flush="true" />
 	</body>
 	<jsp:include page="headerfooter/footer.jsp" />

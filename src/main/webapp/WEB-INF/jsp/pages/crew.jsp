@@ -7,7 +7,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <c:set var="count" value="0" />
-<div>
+<div class="container">
     <sec:authorize access="hasRole('ADMIN')">
 	<div class="row col-xs-12">
 	    <form action="/crew/add" method="GET">
@@ -17,36 +17,27 @@
     </sec:authorize>
 
     <c:forEach items="${content}" var="test">
-	<c:if test="${(count mod 2) == 0}">
-	    <div class="clearfix visible-sm"></div>
-	</c:if>
-	<c:if test="${(count mod 3) == 0}">
-	    <div class="clearfix visible-lg"></div>
-	</c:if>
 
-	<div class="col-xs-12 col-sm-6 col-lg-4 well">
-	    <div class="row">
-		<div class="text-center">
-		    <h1>
-			${test.getHeader()}
-		    </h1>
-		</div>
+	<div class="card">
+	    <div class="card-block">
+		<h1 class="card-title">
+		    ${test.getHeader()}
+		</h1>
 	    </div>
-	    <div class="row">
+	    <div class="card-block">
 		<c:if test="${test.isImageSet()}">
-		    <div class="col-sm-4 col-xs-5">
+		    <div class="col-sm-6 col-xs-5">
 			<img src="/image?image=${test.getImage()}" class="img-responsive img-rounded" /> 
 		    </div>
 		</c:if>
-		<div class="col-sm-8 col-xs-7">
+		<div class="col-sm-6 col-xs-7">
 		    ${test.getBody()} 
 		</div>
 	    </div>
-	    <div class="row">
+	    <div class="card-block">
+		<p class="card-text">${singleContent.getBody()}</p>
 		<div class="text-right">
-		    <h3>
-			${test.getFooter()}
-		    </h3>
+		    <p class="card-text">${test.getFooter()}</p>
 		</div>
 	    </div>
 	    <sec:authorize access="hasRole('ADMIN')">
@@ -66,8 +57,6 @@
 		</table>
 	    </sec:authorize>
 	</div>
-
-	<c:set var="count" value="${count+1}" />
 
     </c:forEach>
 </div>

@@ -12,16 +12,16 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
     <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="/css/mdb.min.css" rel="stylesheet">
 
     <!-- JQuery -->
-    <script src="/js/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <script src="/js/bootstrap.js" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.js"></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/tether.min.js" crossorigin="anonymous"></script>
+    <script src="/js/tether.js"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js" crossorigin="anonymous"></script>
+    <script src="/js/mdb.js"></script>
 
 
     
