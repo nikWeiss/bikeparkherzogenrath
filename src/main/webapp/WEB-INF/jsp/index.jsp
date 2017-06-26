@@ -12,9 +12,8 @@
 
         <body>
 	    <jsp:include page="headerfooter/navbar.jsp" flush="true" />
-	    <div class="container container-fluid">
-		<jsp:include page="pages/${site}.jsp" flush="true" />
-	    </div>
+	    <jsp:include page="pages/${site}.jsp" flush="true" />
 	</body>
+	<jsp:include page="headerfooter/footer.jsp" />
     </html>
 </f:view>
